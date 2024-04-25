@@ -81,7 +81,7 @@ INSERT INTO `country` (`CountryId`, `CountryName`, `Currency`) VALUES
 --
 
 CREATE TABLE `customer` (
-  `CustomerId` int(10) UNSIGNED NOT NULL,
+  `CustomerId` int(10) AUTO_INCREMENT PRIMARY KEY,
   `FirstName` varchar(30) NOT NULL,
   `LastName` varchar(30) NOT NULL,
   `Email` varchar(50) NOT NULL,
@@ -91,16 +91,19 @@ CREATE TABLE `customer` (
   `AddrLine1` varchar(255) NOT NULL,
   `AddrLine2` varchar(255) NOT NULL,
   `TownCity` varchar(50) NOT NULL,
-  `CountyState` varchar(50) NOT NULL
+  `CountyState` varchar(50) NOT NULL,
+  `dob` varchar(50) NOT NULL,
+  `idType` varchar(50) NOT NULL,
+  `idNumber` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`CustomerId`, `FirstName`, `LastName`, `Email`, `Phone`, `CountryId`, `Password`, `AddrLine1`, `AddrLine2`, `TownCity`, `CountyState`) VALUES
-(1, 'Joe', 'Bloggs', 'sample@test.com', 851234567, 1, 'aNuNeNcRyPtEdPaSsWoRd', '123 Fake Street', 'Townsville', 'Galway', 'Co. Galway'),
-(2, 'John', 'Smith', 'testsample@test.com', 879876543, 3, 'Pass123!', '456 Not A Place', 'Somewhere', 'Dallas', 'Texas');
+INSERT INTO `customer` (`FirstName`, `LastName`, `Email`, `Phone`, `CountryId`, `Password`, `AddrLine1`, `AddrLine2`, `TownCity`, `CountyState`, `dob`, `idType` , `idNumber`) VALUES
+('Joe', 'Bloggs', 'sample@test.com', 851234567, 1, 'aNuNeNcRyPtEdPaSsWoRd', '123 Fake Street', 'Townsville', 'Galway', 'Co. Galway', '03/03/2000', 'Passport', 'DV2032SDA'),
+('John', 'Smith', 'testsample@test.com', 879876543, 3, 'Pass123!', '456 Not A Place', 'Somewhere', 'Dallas', 'Texas', '04/12/2003', 'NationalID', 'DSAD21231');
 
 -- --------------------------------------------------------
 
@@ -140,12 +143,6 @@ ALTER TABLE `account`
 ALTER TABLE `country`
   ADD PRIMARY KEY (`CountryId`);
 
---
--- Indexes for table `customer`
---
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`CustomerId`),
-  ADD UNIQUE KEY `CountryId` (`CountryId`);
 
 --
 -- Indexes for table `transaction`
