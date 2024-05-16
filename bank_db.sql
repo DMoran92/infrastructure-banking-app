@@ -39,7 +39,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (1,1,'Current',500.05),(2,2,'Current',1000);
+INSERT INTO `account` VALUES (1,1,'Current',180.05),(2,2,'Current',1280);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,6 +90,7 @@ CREATE TABLE `customer` (
   `dob` varchar(50) NOT NULL,
   `idType` varchar(50) NOT NULL,
   `idNumber` varchar(50) NOT NULL,
+  `Role` varchar(255) DEFAULT 'user',
   PRIMARY KEY (`CustomerId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -100,7 +101,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'Joe','Bloggs','sample@test.com',851234567,1,'aNuNeNcRyPtEdPaSsWoRd','123 Fake Street','Townsville','Galway','Co. Galway','03/03/2000','Passport','DV2032SDA'),(2,'John','Smith','testsample@test.com',879876543,3,'Pass123!','456 Not A Place','Somewhere','Dallas','Texas','04/12/2003','NationalID','DSAD21231');
+INSERT INTO `customer` VALUES (1,'Joe','Bloggs','sample@test.com',851234567,1,'aNuNeNcRyPtEdPaSsWoRd','123 Fake Street','Townsville','Galway','Co. Galway','03/03/2000','Passport','DV2032SDA',NULL),(2,'John','Smith','testsample@test.com',879876543,3,'Pass123!','456 Not A Place','Somewhere','Dallas','Texas','04/12/2003','NationalID','DSAD21231',NULL);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,10 +117,9 @@ CREATE TABLE `transaction` (
   `AccountId` int unsigned DEFAULT NULL,
   `RecipientId` int unsigned DEFAULT NULL,
   `Amount` double DEFAULT NULL,
-  `Timestamp` date NOT NULL,
-  PRIMARY KEY (`TransactionId`),
-  UNIQUE KEY `AccountId` (`AccountId`,`RecipientId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+  `Timestamp` datetime DEFAULT NULL,
+  PRIMARY KEY (`TransactionId`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,7 +128,7 @@ CREATE TABLE `transaction` (
 
 LOCK TABLES `transaction` WRITE;
 /*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
-INSERT INTO `transaction` VALUES (1,1,2,20,'2024-04-16');
+INSERT INTO `transaction` VALUES (2,1,2,20,'2024-05-13 00:00:00'),(3,2,1,30,'2024-05-13 00:00:00'),(5,1,2,20,'2024-05-13 00:00:00'),(6,1,2,30,'2024-05-13 00:00:00'),(7,1,2,20,'2024-05-13 16:25:38'),(8,1,2,30,'2024-05-13 17:11:32'),(9,1,2,40,'2024-05-14 18:06:07'),(10,1,2,10,'2024-05-15 13:20:15'),(11,1,2,10,'2024-05-15 13:22:01'),(12,1,2,40,'2024-05-15 13:57:00'),(13,1,2,300,'2024-05-15 13:57:11'),(14,2,1,300,'2024-05-15 13:57:28'),(15,1,2,10,'2024-05-15 13:58:10'),(16,1,2,20,'2024-05-15 14:06:35'),(17,1,2,10,'2024-05-15 14:23:42'),(18,2,1,20,'2024-05-15 14:23:53');
 /*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -141,4 +141,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-08  9:18:34
+-- Dump completed on 2024-05-16 13:58:46
