@@ -82,7 +82,8 @@ CREATE TABLE `customer` (
   `Email` varchar(50) NOT NULL,
   `Phone` int NOT NULL,
   `CountryId` int NOT NULL,
-  `Password` varchar(50) NOT NULL,
+  `Username` varchar(10) NOT NULL,
+  `Password` varchar(100) NOT NULL,
   `AddrLine1` varchar(255) NOT NULL,
   `AddrLine2` varchar(255) NOT NULL,
   `TownCity` varchar(50) NOT NULL,
@@ -101,7 +102,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'Joe','Bloggs','sample@test.com',851234567,1,'aNuNeNcRyPtEdPaSsWoRd','123 Fake Street','Townsville','Galway','Co. Galway','03/03/2000','Passport','DV2032SDA',NULL),(2,'John','Smith','testsample@test.com',879876543,3,'Pass123!','456 Not A Place','Somewhere','Dallas','Texas','04/12/2003','NationalID','DSAD21231',NULL);
+INSERT INTO `customer` VALUES (1,'Joe','Bloggs','sample@test.com',851234567,1,'1111','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','123 Fake Street','Townsville','Galway','Co. Galway','03/03/2000','Passport','DV2032SDA',NULL),(2,'John','Smith','testsample@test.com',879876543,3,'2222','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','456 Not A Place','Somewhere','Dallas','Texas','04/12/2003','NationalID','DSAD21231',NULL);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
