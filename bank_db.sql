@@ -134,6 +134,7 @@ INSERT INTO `transaction` VALUES (2,1,2,20,'2024-05-13 00:00:00'),(3,2,1,30,'202
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+
 DROP TABLE IF EXISTS `paymentcard`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
@@ -152,6 +153,28 @@ CREATE TABLE `paymentcard` (
 INSERT INTO `paymentcard` (customer_id, card_number, expiry_date, status) VALUES 
 (1, '1234567812345678', '12/2025', 'Active'),
 (2, '8765432187654321', '06/2024', 'Frozen');
+
+
+DROP TABLE IF EXISTS `favouritepayees`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+
+-- Create FavouritePayees table
+CREATE TABLE `favouritepayees` (
+    `id` int unsigned AUTO_INCREMENT NOT NULL,
+    `name` VARCHAR(255) NOT NULL,
+    `iban` VARCHAR(34) NOT NULL,
+    `customer_id` int unsigned NOT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`customer_id`) REFERENCES customer(`CustomerId`)
+);
+
+-- Insert dummy data into FavouritePayees table
+INSERT INTO `favouritepayees` (name, iban, customer_id) VALUES 
+('John Doe', 'DE89370400440532013000', 1),
+('Jane Smith', 'FR1420041010050500013M02606', 1),
+('Alice Johnson', 'GB33BUKB20201555555555', 2),
+('Bob Brown', 'NL91ABNA0417164300', 2);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
