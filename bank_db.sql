@@ -24,13 +24,12 @@ DROP TABLE IF EXISTS `account`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `account` (
   `AccountId` int unsigned NOT NULL AUTO_INCREMENT,
-  `CustomerId` int unsigned NOT NULL,
+  `CustomerId` int unsigned DEFAULT NULL,
   `AccountType` varchar(30) NOT NULL,
   `Balance` double DEFAULT NULL,
-  PRIMARY KEY (`AccountId`),
-  UNIQUE KEY `CustomerId` (`CustomerId`),
-  CONSTRAINT `account_ibfk_1` FOREIGN KEY (`CustomerId`) REFERENCES `customer` (`CustomerId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+  `IBAN` varchar(22) DEFAULT NULL,
+  PRIMARY KEY (`AccountId`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +38,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (1,1,'Current',180.05),(2,2,'Current',1280);
+INSERT INTO `account` VALUES (1,1,'Current',160.05,'IE01BOGY91332200000001'),(2,2,'Current',951,'test'),(8,8,'Current',120,'IE08BOGY91332200000008'),(9,9,'Current',0,'IE09BOGY91332200000009'),(10,10,'Current',0,'IE10BOGY91332200000010'),(11,11,'Current',0,'IE11BOGY91332200000011'),(12,12,'Current',30,'IE12BOGY91332200000012'),(14,12,'Savings',49,'IE14BOGY91332200000014'),(15,13,'Current',100,'IE15BOGY91332200000015'),(16,14,'Current',0,'IE16BOGY91332200000016'),(17,15,'Current',0,'IE17BOGY91332200000017'),(18,16,'Current',100,'IE18BOGY91332200000018'),(19,17,'Current',0,'IE19BOGY91332200000019'),(20,18,'Current',0,'IE20BOGY91332200000020');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,7 +81,7 @@ CREATE TABLE `customer` (
   `Email` varchar(50) NOT NULL,
   `Phone` int NOT NULL,
   `CountryId` int NOT NULL,
-  `Password` varchar(50) NOT NULL,
+  `Password` varchar(100) NOT NULL,
   `AddrLine1` varchar(255) NOT NULL,
   `AddrLine2` varchar(255) NOT NULL,
   `TownCity` varchar(50) NOT NULL,
@@ -91,8 +90,9 @@ CREATE TABLE `customer` (
   `idType` varchar(50) NOT NULL,
   `idNumber` varchar(50) NOT NULL,
   `Role` varchar(255) DEFAULT 'user',
+  `Username` varchar(10) NOT NULL,
   PRIMARY KEY (`CustomerId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,7 +101,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'Joe','Bloggs','sample@test.com',851234567,1,'aNuNeNcRyPtEdPaSsWoRd','123 Fake Street','Townsville','Galway','Co. Galway','03/03/2000','Passport','DV2032SDA',NULL),(2,'John','Smith','testsample@test.com',879876543,3,'Pass123!','456 Not A Place','Somewhere','Dallas','Texas','04/12/2003','NationalID','DSAD21231',NULL);
+INSERT INTO `customer` VALUES (1,'Joe','Bloggs','sample@test.com',851234567,1,'$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','123 Fake Street','Townsville','Galway','Co. Galway','03/03/2000','Passport','DV2032SDA',NULL,'1111'),(2,'John','Smith','testsample@test.com',879876543,3,'$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','456 Not A Place','Somewhere','Dallas','Texas','04/12/2003','NationalID','DSAD21231',NULL,'2222'),(3,'TestFirst','TestLast','testemail@mail.com',851234567,0,'$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','TestAddr1','TestAddr2','TestCity','Dublin, Ireland','test','TestID','TestNum','user','3333'),(4,'a','b','c',0,0,'$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','f','g','h','Dublin, Ireland','0','i','0','user','4444'),(5,'modal','test','mod@l.com',565565,0,'$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','gyugyug','iopipoipo','fgdgfdgf','Dublin, Ireland','1231312','gygyu','78979','user','5555'),(6,'testAccFirst','testAccLast','ewfgwef@fewfw.com',4568654,0,'$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','kojipfwegjio','9j0feqnio','kopfgkop','Dublin, Ireland','123456','iojfwejio','4564632','user','6666'),(7,'gre','ioj','jio',4896,0,'$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','nio','oi','nio','Dublin, Ireland','564','njo','564','user','7777'),(8,'hiu','hiu','jopjpo',45646,0,'$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','jiokjio','ioj','ij','Dublin, Ireland','1231','jijio','486469','user','8888'),(9,'jipof39pjef','pojfeqwpjof','pjofwqopj',123132,0,'$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','oijfejioef','iojwefjiofew','oijfewjioef','Dublin, Ireland','12313221','jiowefopjfew','123121','user','9999'),(10,'gerreg','rggr','rggw',4865,0,'$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','gewweg','wegwe','qegqe','Dublin, Ireland','123132','wegweg','789798','user','10101010'),(11,'reherh','herhe','wqegwe',48648,0,'$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','gewgw','egweg','wegweg','Dublin, Ireland','121654','wegweg','1231653489','user','11111111'),(12,'feq','qwf','wqf',375345453,0,'$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','grereg','rgereg','rewggre','Dublin, Ireland','12312','gwegwer','378123','user','12121212'),(13,'fewfw','wefwef','qeqewq',678678,0,'$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','thrthr','qwefqewf','rgerwg','Dublin, Ireland','48373','qwdfqwdf','463738','user','13131313'),(14,'gerwgweg','wegweg','wegweg',637863,0,'$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','tehrteh','qegfqewgf','wegwg','Dublin, Ireland','37837','rhgrher','73783','user','14141414'),(15,'wegweg','wegweg','wegweg',15615,0,'$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','gger','ergerg','gerge','Dublin, Ireland','45646','erger','45646458','user','15151515'),(16,'fwwfq','wqfqwf','qw',786378,0,'$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','3greg','erger','wgfewfg','Dublin, Ireland','37837','egtweg','783783','user','16161616'),(17,'ethnerth','ewrherh','erherh',0,0,'$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','regerhg','wegfwe','wegweg','Dublin, Ireland','78378','jrtjrt','78676','user','17171717'),(18,'ewgweg','qegweh','wehjerj',0,0,'$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','wegweg','wegw','wegweg','Dublin, Ireland','78373','dtykjdt','378387','user','18181818'),(19,'iuhhiu','hiuoui','iuhuhi@jiodfe.com',486,0,'$2a$10$wWyrfJsLJhGxKH8ZKX4ApOIeydmuqTxQRQzk0T3CvWR8LlJ9WmA.i','huhui','hyyuig','hiuhuhui','Cavan','2024-12-30','uohjo','7887',NULL,'19188848');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,11 +115,14 @@ DROP TABLE IF EXISTS `transaction`;
 CREATE TABLE `transaction` (
   `TransactionId` int unsigned NOT NULL AUTO_INCREMENT,
   `AccountId` int unsigned DEFAULT NULL,
-  `RecipientId` int unsigned DEFAULT NULL,
+  `RecipientIBAN` varchar(22) DEFAULT NULL,
   `Amount` double DEFAULT NULL,
   `Timestamp` datetime DEFAULT NULL,
+  `SenderIBAN` varchar(22) DEFAULT NULL,
+  `Category` varchar(20) DEFAULT NULL,
+  `SenderName` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`TransactionId`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,7 +131,7 @@ CREATE TABLE `transaction` (
 
 LOCK TABLES `transaction` WRITE;
 /*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
-INSERT INTO `transaction` VALUES (2,1,2,20,'2024-05-13 00:00:00'),(3,2,1,30,'2024-05-13 00:00:00'),(5,1,2,20,'2024-05-13 00:00:00'),(6,1,2,30,'2024-05-13 00:00:00'),(7,1,2,20,'2024-05-13 16:25:38'),(8,1,2,30,'2024-05-13 17:11:32'),(9,1,2,40,'2024-05-14 18:06:07'),(10,1,2,10,'2024-05-15 13:20:15'),(11,1,2,10,'2024-05-15 13:22:01'),(12,1,2,40,'2024-05-15 13:57:00'),(13,1,2,300,'2024-05-15 13:57:11'),(14,2,1,300,'2024-05-15 13:57:28'),(15,1,2,10,'2024-05-15 13:58:10'),(16,1,2,20,'2024-05-15 14:06:35'),(17,1,2,10,'2024-05-15 14:23:42'),(18,2,1,20,'2024-05-15 14:23:53');
+INSERT INTO `transaction` VALUES (2,1,'2',20,'2024-05-13 00:00:00',NULL,NULL,NULL),(3,2,'1',30,'2024-05-13 00:00:00',NULL,NULL,NULL),(5,1,'2',20,'2024-05-13 00:00:00',NULL,NULL,NULL),(6,1,'2',30,'2024-05-13 00:00:00',NULL,NULL,NULL),(7,1,'2',20,'2024-05-13 16:25:38',NULL,NULL,NULL),(8,1,'2',30,'2024-05-13 17:11:32',NULL,NULL,NULL),(9,1,'2',40,'2024-05-14 18:06:07',NULL,NULL,NULL),(10,1,'2',10,'2024-05-15 13:20:15',NULL,NULL,NULL),(11,1,'2',10,'2024-05-15 13:22:01',NULL,NULL,NULL),(12,1,'2',40,'2024-05-15 13:57:00',NULL,NULL,NULL),(13,1,'2',300,'2024-05-15 13:57:11',NULL,NULL,NULL),(14,2,'1',300,'2024-05-15 13:57:28',NULL,NULL,NULL),(15,1,'2',10,'2024-05-15 13:58:10',NULL,NULL,NULL),(16,1,'2',20,'2024-05-15 14:06:35',NULL,NULL,NULL),(17,1,'2',10,'2024-05-15 14:23:42',NULL,NULL,NULL),(18,2,'1',20,'2024-05-15 14:23:53',NULL,NULL,NULL),(19,8,'1',0,'2024-05-27 13:48:12',NULL,NULL,NULL),(20,2,'8',100,'2024-05-27 13:59:14',NULL,NULL,NULL),(21,8,'1',0,'2024-05-27 14:10:23',NULL,NULL,NULL),(22,9,'1',0,'2024-05-27 14:10:37',NULL,NULL,NULL),(23,12,'0',0,'2024-05-27 16:07:49',NULL,NULL,NULL),(24,2,'12',10,'2024-05-27 16:09:47',NULL,NULL,NULL),(25,1,'2',10,'2024-05-27 16:10:25',NULL,NULL,NULL),(26,1,'12',20,'2024-05-27 16:13:20',NULL,NULL,NULL),(27,16,'0',0,'2024-05-28 11:31:41',NULL,NULL,NULL),(28,1,'15',100,'2024-05-28 11:55:00',NULL,NULL,NULL),(29,1,'17',100,'2024-05-28 11:55:21',NULL,NULL,NULL),(30,17,'1',100,'2024-05-28 11:55:39',NULL,NULL,NULL),(31,14,'1',1,'2024-05-28 11:59:30',NULL,NULL,NULL),(32,1,'2',10,'2024-06-13 12:56:13',NULL,NULL,NULL),(33,1,'2',10,'2024-06-13 16:28:12',NULL,NULL,NULL),(34,2,'18',100,'2024-06-13 16:28:42',NULL,NULL,NULL),(35,2,'1',10,'2024-06-13 16:31:08',NULL,NULL,NULL),(36,2,'1',20,'2024-06-13 16:31:16',NULL,NULL,NULL),(37,1,'2',20,'2024-06-13 16:33:03',NULL,NULL,NULL),(38,1,'2',10,'2024-06-13 16:33:29',NULL,NULL,NULL),(39,1,'2',20,'2024-06-13 16:33:40',NULL,NULL,NULL),(40,1,'2',1,'2024-06-13 16:33:44',NULL,NULL,NULL),(41,1,'test',1,'2024-06-17 12:28:55',NULL,NULL,NULL),(42,1,'test',1,'2024-06-17 12:29:19',NULL,NULL,NULL),(43,1,'test',2,'2024-06-17 16:37:45',NULL,NULL,NULL),(44,1,'test',1,'2024-06-17 16:46:07',NULL,NULL,NULL),(45,1,'test',1,'2024-06-17 16:48:23',NULL,NULL,NULL),(46,1,NULL,1,'2024-06-17 16:48:23','IE01BOGY91332200000001',NULL,NULL),(47,1,'test',1,'2024-06-17 16:48:53',NULL,NULL,NULL),(48,1,NULL,1,'2024-06-17 16:48:53','IE01BOGY91332200000001',NULL,NULL),(49,1,'test',1,'2024-06-17 16:54:30',NULL,NULL,NULL),(50,2,NULL,1,'2024-06-17 16:54:30','IE01BOGY91332200000001',NULL,NULL),(51,1,'test',1,'2024-06-17 16:54:52',NULL,NULL,NULL),(52,2,NULL,1,'2024-06-17 16:54:52','IE01BOGY91332200000001',NULL,NULL),(53,2,'IE01BOGY91332200000001',100,'2024-06-17 17:02:06',NULL,NULL,NULL),(54,1,NULL,100,'2024-06-17 17:02:06','test',NULL,NULL),(55,2,'IE08BOGY91332200000008',100,'2024-06-17 17:02:44',NULL,NULL,NULL),(56,8,NULL,100,'2024-06-17 17:02:44','test',NULL,NULL),(57,8,'test',20,'2024-06-17 17:17:34',NULL,NULL,NULL),(58,2,NULL,20,'2024-06-17 17:17:34','IE08BOGY91332200000008',NULL,NULL),(59,8,'test',20,'2024-06-17 17:52:00',NULL,NULL,NULL),(60,2,NULL,20,'2024-06-17 17:52:00','IE08BOGY91332200000008',NULL,NULL),(61,8,'test',30,'2024-06-17 17:52:09',NULL,NULL,NULL),(62,2,NULL,30,'2024-06-17 17:52:09','IE08BOGY91332200000008',NULL,NULL),(63,2,'IE08BOGY91332200000008',50,'2024-06-17 17:52:32',NULL,NULL,NULL),(64,8,NULL,50,'2024-06-17 17:52:32','test',NULL,NULL),(65,8,'IE01BOGY91332200000001',60,'2024-06-17 18:10:38',NULL,NULL,NULL),(66,1,NULL,60,'2024-06-17 18:10:38','IE08BOGY91332200000008',NULL,NULL);
 /*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -141,4 +144,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-16 13:58:46
+-- Dump completed on 2024-06-17 18:09:39
