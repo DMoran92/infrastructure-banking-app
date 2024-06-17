@@ -135,6 +135,26 @@ UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 
+DROP TABLE IF EXISTS `paymentcard`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `paymentcard` (
+	`card_id` int unsigned NOT NULL AUTO_INCREMENT,
+	`customer_id` int unsigned NOT NULL,
+	`card_number` varchar(16) NOT NULL,
+	`expiry_date` varchar(7) NOT NULL,  -- Format: MM/YYYY
+	`status` varchar(20) NOT NULL DEFAULT 'Active',  -- Default to 'Active'
+	PRIMARY KEY (`card_id`),
+	FOREIGN KEY (`customer_id`) REFERENCES `customer`(`CustomerId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- Insert dummy data into paymentcard table
+INSERT INTO `paymentcard` (customer_id, card_number, expiry_date, status) VALUES 
+(1, '1234567812345678', '12/2025', 'Active'),
+(2, '8765432187654321', '06/2024', 'Frozen');
+
+
 DROP TABLE IF EXISTS `favouritepayees`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
