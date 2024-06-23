@@ -101,7 +101,24 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'Joe','Bloggs','sample@test.com',851234567,1,'1111','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','123 Fake Street','Townsville','Galway','Co. Galway','03/03/2000','Passport','DV2032SDA',NULL),(2,'John','Smith','testsample@test.com',879876543,3,'2222','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','456 Not A Place','Somewhere','Dallas','Texas','04/12/2003','NationalID','DSAD21231',NULL);
+INSERT INTO `customer` VALUES 
+(1,'Joe','Bloggs','sample@test.com',851234567,1,'1111','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','123 Fake Street','Townsville','Galway','Co. Galway','03/03/2000','Passport','DV2032SDA','user'),
+(2,'John','Smith','testsample@test.com',879876543,3,'2222','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','456 Not A Place','Somewhere','Dallas','Texas','04/12/2003','NationalID','DSAD21231','user'),
+(3,'TestFirst','TestLast','testemail@mail.com',851234567,0,'3333','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','TestAddr1','TestAddr2','TestCity','Dublin, Ireland','test','TestID','TestNum','user'),
+(5,'modal','test','mod@l.com',565565,0,'5555','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','gyugyug','iopipoipo','fgdgfdgf','Dublin, Ireland','1231312','gygyu','78979','user'),
+(6,'testAccFirst','testAccLast','ewfgwef@fewfw.com',4568654,0,'6666','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','kojipfwegjio','9j0feqnio','kopfgkop','Dublin, Ireland','123456','iojfwejio','4564632','user'),
+(8,'hiu','hiu','jopjpo',45646,0,'8888','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','jiokjio','ioj','ij','Dublin, Ireland','1231','jijio','486469','user'),
+(9,'jipof39pjef','pojfeqwpjof','pjofwqopj',123132,0,'9999','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','oijfejioef','iojwefjiofew','oijfewjioef','Dublin, Ireland','12313221','jiowefopjfew','123121','user'),
+(10,'gerreg','rggr','rggw',4865,0,'1010','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','gewweg','wegwe','qegqe','Dublin, Ireland','123132','wegweg','789798','user'),
+(11,'reherh','herhe','wqegwe',48648,0,'1011','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','gewgw','egweg','wegweg','Dublin, Ireland','121654','wegweg','1231653489','user'),
+(12,'feq','qwf','wqf',375345453,0,'1012','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','grereg','rgereg','rewggre','Dublin, Ireland','12312','gwegwer','378123','user'),
+(13,'fewfw','wefwef','qeqewq',678678,0,'1013','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','thrthr','qwefqewf','rgerwg','Dublin, Ireland','48373','qwdfqwdf','463738','user'),
+(14,'gerwgweg','wegweg','wegweg',637863,0,'1014','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','tehrteh','qegfqewgf','wegwg','Dublin, Ireland','37837','rhgrher','73783','user'),
+(15,'wegweg','wegweg','wegweg',15615,0,'1015','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','gger','ergerg','gerge','Dublin, Ireland','45646','erger','45646458','user'),
+(16,'fwwfq','wqfqwf','qw',786378,0,'1016','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','3greg','erger','wgfewfg','Dublin, Ireland','37837','egtweg','783783','user'),
+(17,'ethnerth','ewrherh','erherh',0,0,'1017','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','regerhg','wegfwe','wegweg','Dublin, Ireland','78378','jrtjrt','78676','user'),
+(18,'ewgweg','qegweh','wehjerj',0,0,'1018','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','wegweg','wegw','wegweg','Dublin, Ireland','78373','dtykjdt','378387','user'),
+(19,'iuhhiu','hiuoui','iuhuhi@jiodfe.com',486,0,'1019','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','huhui','hyyuig','hiuhuhui','Cavan','2024-12-30','uohjo','7887','user');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
