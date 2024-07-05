@@ -150,10 +150,9 @@ CREATE TABLE `transaction` (
 LOCK TABLES `transaction` WRITE;
 /*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
 /* TransactionId, accountId, RecipientName, RecipientIBAN,amount,Timestamp,SenderIBAN,Category,SenderName */
-INSERT INTO `transaction` VALUES 
-(1,2,'Joe Bloggs','IE01BOGY91332200000001',50,'2024-06-17 16:54:52','IE08BOGY91332200000002','Transfer','John Smith'),
-(2,8,'Joe Bloggs','IE01BOGY91332200000001',46.54,'2024-06-16 11:44:52','IE08BOGY91332200000008','Transfer','Sally Collins'),
-(3,1,'Sally Collins','IE08BOGY91332200000008',95,'2024-06-20 21:11:12','IE01BOGY91332200000001','Transfer','Joe Bloggs');
+INSERT INTO transaction (accountId, RecipientName, RecipientIBAN,amount,Timestamp,SenderIBAN,Category,SenderName)   VALUES (1,'John Smith','IE01BOGY91332200000002',524,'2024-03-22 16:54:52','IE08BOGY91332200000001','Transfer','Joe Bloggs');
+INSERT INTO transaction (accountId, RecipientName, RecipientIBAN,amount,Timestamp,SenderIBAN,Category,SenderName) VALUES (1,'Joe Bloggs','',925,'2024-05-11 16:54:52','','Other','');
+
 /*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -199,6 +198,19 @@ INSERT INTO `favouritepayees` (name, iban, customer_id) VALUES
 ('Jane Smith', 'FR1420041010050500013M02606', 1),
 ('Alice Johnson', 'GB33BUKB20201555555555', 2),
 ('Bob Brown', 'NL91ABNA0417164300', 2);
+
+
+-- Create a table for savings transactions
+CREATE TABLE savings_transactions (
+    `transaction_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `AccountId` int unsigned DEFAULT NULL,
+    `product_name` VARCHAR(255) NOT NULL,
+    `interest_rate` DECIMAL(15,2) NOT NULL,
+    `amount` DECIMAL(15,2) NOT NULL,
+    `start_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `end_date` TIMESTAMP,
+    `status` VARCHAR(50) NOT NULL
+);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
