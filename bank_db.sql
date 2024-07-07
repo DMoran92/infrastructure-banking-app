@@ -212,6 +212,16 @@ CREATE TABLE savings_transactions (
     `status` VARCHAR(50) NOT NULL
 );
 
+-- Create a table for exchange rates
+CREATE TABLE exchange_rates_current (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    base_currency VARCHAR(3) NOT NULL,
+    target_currency VARCHAR(3) NOT NULL,
+    rate DECIMAL(15,6) NOT NULL,
+	previous_rate DECIMAL(15,6) NOT NULL,
+    timestamp TIMESTAMP NOT NULL
+);
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
