@@ -103,7 +103,7 @@ CREATE TABLE `customer` (
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
 INSERT INTO `customer` VALUES 
-(1,'Joe','Bloggs','sample@test.com',851234567,1,'1111','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','123 Fake Street','Townsville','Galway','Co. Galway','03/03/2000','Passport','DV2032SDA','user'),
+(1,'Joe','Bloggs','joebloggsbog@onmail.com',851234567,1,'1111','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','123 Fake Street','Townsville','Galway','Co. Galway','03/03/2000','Passport','DV2032SDA','user'),
 (2,'John','Smith','testsample@test.com',879876543,3,'2222','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','456 Not A Place','Somewhere','Dallas','Texas','04/12/2003','NationalID','DSAD21231','user'),
 (3,'TestFirst','TestLast','testemail@mail.com',851234567,0,'3333','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','TestAddr1','TestAddr2','TestCity','Dublin, Ireland','test','TestID','TestNum','user'),
 (5,'modal','test','mod@l.com',565565,0,'5555','$2a$10$ga7vy9yHkzmRiELdXx2hfu23GV91pLbeEM5FQ4N0ONReDkLG9lAfy','gyugyug','iopipoipo','fgdgfdgf','Dublin, Ireland','1231312','gygyu','78979','user'),
