@@ -622,6 +622,19 @@ CREATE TABLE exchange_rates_current (
     timestamp TIMESTAMP NOT NULL
 );
 
+
+-- Create FavouritePayees table
+CREATE TABLE `two_factor_auth` (
+    `id` int unsigned AUTO_INCREMENT NOT NULL,
+    `last_known_browser` VARCHAR(255),
+    `two_fa_code` VARCHAR(5),
+	`two_fa_code_expiry` TIMESTAMP,
+    `customer_id` int unsigned NOT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`customer_id`) REFERENCES customer(`CustomerId`)
+);
+
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
